@@ -232,7 +232,7 @@ namespace Mesen.Debugger.Windows
 
 		private void OnDrop(object? sender, DragEventArgs e)
 		{
-			string? filename = e.Data.GetFiles()?.FirstOrDefault()?.Path.LocalPath;
+			string? filename = e.DataTransfer.TryGetFile()?.Path.LocalPath;
 			if(filename != null && File.Exists(filename)) {
 				Activate();
 				DebugWorkspaceManager.LoadSupportedFile(filename, true);

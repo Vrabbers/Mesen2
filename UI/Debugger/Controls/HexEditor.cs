@@ -10,6 +10,7 @@ using Mesen.Config;
 using System.Text.RegularExpressions;
 using Mesen.Debugger.Utilities;
 using System.Globalization;
+using Avalonia.Input.Platform;
 
 namespace Mesen.Debugger.Controls
 {
@@ -408,7 +409,7 @@ namespace Mesen.Debugger.Controls
 		{
 			var clipboard = ApplicationHelper.GetMainWindow()?.Clipboard;
 			if(clipboard != null) {
-				string? text = await clipboard.GetTextAsync();
+                string? text = await clipboard.TryGetTextAsync();
 				if(text != null) {
 					text = text.Replace("\n", "").Replace("\r", "");
 					if(Regex.IsMatch(text, "^[ a-f0-9]+$", RegexOptions.IgnoreCase)) {

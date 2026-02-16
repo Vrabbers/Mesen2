@@ -103,7 +103,7 @@ ifeq ($(PGO),optimize)
 endif
 
 ifneq ($(STATICLINK),false)
-	LINKOPTIONS += -static-libgcc -static-libstdc++ 
+	LINKOPTIONS += -static-libgcc -static-libstdc++
 endif
 
 ifeq ($(MESENOS),osx)
@@ -131,7 +131,7 @@ endif
 ifeq ($(USE_AOT),true)
 	PUBLISHFLAGS ?=  -r $(MESENPLATFORM) -p:PublishSingleFile=false -p:PublishAot=true -p:SelfContained=true
 else
-	PUBLISHFLAGS ?=  -r $(MESENPLATFORM) --no-self-contained true -p:PublishSingleFile=true
+	PUBLISHFLAGS ?=  -r $(MESENPLATFORM) --no-self-contained -p:PublishSingleFile=true
 endif
 
 
@@ -185,10 +185,10 @@ endif
 FSLIB := -lstdc++fs
 
 ifeq ($(MESENOS),osx)
-	LIBEVDEVOBJ := 
-	LIBEVDEVINC := 
-	LIBEVDEVSRC := 
-	FSLIB := 
+	LIBEVDEVOBJ :=
+	LIBEVDEVINC :=
+	LIBEVDEVSRC :=
+	FSLIB :=
 	ifeq ($(USE_AOT),true)
 		PUBLISHFLAGS := -t:BundleApp -p:UseAppHost=true -p:RuntimeIdentifier=$(MESENPLATFORM) -p:PublishSingleFile=false -p:PublishAot=true -p:SelfContained=true
 	else
@@ -214,7 +214,7 @@ pgohelper: InteropDLL/$(OBJFOLDER)/$(SHAREDLIB)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
