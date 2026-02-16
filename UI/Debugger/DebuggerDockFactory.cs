@@ -267,4 +267,6 @@ namespace Mesen.Debugger
 public class MesenProportionalDockSplitter : DockBase, IProportionalDockSplitter
 {
 	//The regular ProportionalDockSplitter in Dock.Model.Mvvm.Controls inherits from DockableBase, which causes an exception when styles are applied
+	public bool CanResize { get => false; set => throw new NotImplementedException(); }
+	public bool ResizePreview { get => false; set => throw new NotImplementedException(); }
 }
